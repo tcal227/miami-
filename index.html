@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Swipe between maps</title>
+<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.css" rel="stylesheet">
+<script src="https://api.mapbox.com/mapbox-gl-js/v2.3.1/mapbox-gl.js"></script>
+<style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+
+body {
+        overflow: hidden;
+    }
+
+    body * {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+    }
+
+    #info { 
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 9999;
+        background-color: rgba(0,0,0,0.5);
+        padding: 1em;
+        color: white;
+        border-radius: 1em;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 1.5em;
+    }
+</style>
+</head>
+
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-compare/v0.4.0/mapbox-gl-compare.css" type="text/css">
+<body>
+    <!-- Replace Hello World with a short title. 🧀🧀🧀 -->
+<div id="info">Miami 1950s</div>
+<div id="comparison-container">
+    <div id="before" class="map"></div>
+    <div id="after" class="map"></div>
+</div>
+<script>
+    // Add your Mapbox access token here. 🧀🧀🧀
+	mapboxgl.accessToken = 'pk.eyJ1IjoidGFubmVyYWxsZW4iLCJhIjoiY2tyd2JrOWZ0MGYyMTJ1bnA0MzJzZ2VpMiJ9._158BxKCvB28ntm0-uMJ2A';
+    var beforeMap = new mapboxgl.Map({
+        container: 'before',
+        //  Before map style goes here 🧀🧀🧀
+        style: 'mapbox://styles/tannerallen/ckrxrldug2gf317o58oy5557n',
+        center: [0, 0],
+        zoom: 0
+    });
+
+    var afterMap = new mapboxgl.Map({
+        container: 'after',
+        //  After map style goes here 🧀🧀🧀
+        style: 'mapbox://styles/tannerallen/ckrxrxls61nbp18pjdy9mskw7',
+        center: [0, 0],
+        zoom: 0
+    });
+
+    // A selector or reference to HTML element
+    var container = '#comparison-container';
+
+    var map = new mapboxgl.Compare(beforeMap, afterMap, container, {
+        // Set this to enable comparing two maps by mouse movement:
+        // mousemove: true
+    });
+</script>
+
+</body>
+</html>
